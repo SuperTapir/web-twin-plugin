@@ -20,7 +20,11 @@ class Parser:
 
         # Fallback to html5lib if parsing fails
         if not self.soup or not self.soup.html:
-            self.soup = BeautifulSoup(html, "html5lib")
+            try:
+                self.soup = BeautifulSoup(html, "html5lib")
+            except Exception:
+                # html5lib is optional; keep the html.parser result
+                pass
 
     def extract_metadata(self) -> Metadata:
         """Extract metadata from HTML."""

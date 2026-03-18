@@ -1,7 +1,11 @@
 """Selenium renderer for webtwin."""
 
+from __future__ import annotations
+
 import time
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
+
+from .logger import logger
 
 # Try to import Selenium
 SELENIUM_AVAILABLE = False
@@ -19,9 +23,8 @@ try:
 except ImportError:
     pass
 
-# Import logger after selenium check
-if SELENIUM_AVAILABLE:
-    from .logger import logger
+if TYPE_CHECKING:
+    from selenium import webdriver
 
 
 class SeleniumRenderer:
