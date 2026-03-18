@@ -17,21 +17,36 @@ Once installed, Claude automatically gains full knowledge of the `web_twin` modu
 
 **Zero manual setup** — just install the plugin and tell Claude "clone this website".
 
-## Quick Start
+## Install
 
-### 1. Add Marketplace
+### Option A: Marketplace (Recommended)
 
 ```bash
 claude plugin marketplace add SuperTapir/web-twin-plugin
-```
-
-### 2. Install Plugin
-
-```bash
 claude plugin install web-twin@web-twin-plugin
 ```
 
-### 3. Start Using
+### Option B: Git Clone
+
+```bash
+git clone https://github.com/SuperTapir/web-twin-plugin.git ~/.claude/skills/web-twin-plugin
+```
+
+Then add to your project's `.claude/settings.json`:
+
+```json
+{
+  "skills": ["~/.claude/skills/web-twin-plugin/skills/web-twin"]
+}
+```
+
+Or copy the skill folder directly into your project:
+
+```bash
+cp -r web-twin-plugin/skills/web-twin .claude/skills/web-twin
+```
+
+### Start Using
 
 ```
 > Extract the website resources and UI components from https://example.com

@@ -17,21 +17,36 @@ Claude Code 插件：网站提取、克隆与资源抓取。
 
 **你不需要手动做任何事**——安装插件后直接对 Claude 说"帮我克隆这个网站"就行。
 
-## 快速开始
+## 安装
 
-### 1. 添加 Marketplace
+### 方式 A：Marketplace（推荐）
 
 ```bash
 claude plugin marketplace add SuperTapir/web-twin-plugin
-```
-
-### 2. 安装插件
-
-```bash
 claude plugin install web-twin@web-twin-plugin
 ```
 
-### 3. 开始使用
+### 方式 B：Git Clone
+
+```bash
+git clone https://github.com/SuperTapir/web-twin-plugin.git ~/.claude/skills/web-twin-plugin
+```
+
+然后在项目的 `.claude/settings.json` 中添加：
+
+```json
+{
+  "skills": ["~/.claude/skills/web-twin-plugin/skills/web-twin"]
+}
+```
+
+或者直接把 skill 文件夹复制到你的项目里：
+
+```bash
+cp -r web-twin-plugin/skills/web-twin .claude/skills/web-twin
+```
+
+### 开始使用
 
 ```
 > 帮我提取 https://example.com 的网站资源和 UI 组件
