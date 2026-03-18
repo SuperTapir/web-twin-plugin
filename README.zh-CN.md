@@ -1,6 +1,6 @@
 # web-twin
 
-[English](./README.md)
+[English](./README.md) | 简体中文
 
 Claude Code 插件：网站提取、克隆与资源抓取。
 

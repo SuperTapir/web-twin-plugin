@@ -1,6 +1,6 @@
 # web-twin
 
-[简体中文](./README.zh-CN.md)
+English | [简体中文](./README.zh-CN.md)
 
 Claude Code plugin for website extraction, cloning, and resource crawling.
 
