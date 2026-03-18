@@ -10,6 +10,7 @@
   "plugins": [
     {
       "name": "web-twin",
+      "version": "0.1.0",
       "source": "./",
       "description": "Extract HTML, CSS, JS, images, fonts, UI components from any website. Supports Selenium JS rendering with graceful HTTP fallback.",
       "author": {

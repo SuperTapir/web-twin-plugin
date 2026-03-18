@@ -2,7 +2,19 @@
   "name": "web-twin",
   "version": "0.1.0",
   "description": "Website extraction, cloning, and resource crawling library. Extract HTML, CSS, JS, images, fonts, UI components from any website. Supports Selenium JS rendering with graceful HTTP fallback.",
-  "author": "liukailong",
-  "originalAuthor": "Sirio Berati (https://github.com/sirioberati/WebTwin)",
-  "license": "MIT"
+  "author": {
+    "name": "liukailong"
+  },
+  "homepage": "https://github.com/SuperTapir/web-twin-plugin",
+  "repository": "https://github.com/SuperTapir/web-twin-plugin",
+  "license": "MIT",
+  "keywords": [
+    "web-scraping",
+    "website-cloning",
+    "html-extraction",
+    "ui-components",
+    "selenium",
+    "url2app"
+  ],
+  "skills": ["./skills/"]
 }
