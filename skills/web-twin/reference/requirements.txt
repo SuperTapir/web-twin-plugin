@@ -1,0 +1,10 @@
+requests
+beautifulsoup4
+urllib3
+
+# Optional: JS rendering support
+# selenium
+# webdriver-manager
+
+# Optional: HTML parser fallback
+# html5lib
