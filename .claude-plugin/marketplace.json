@@ -1,0 +1,39 @@
+{
+  "name": "web-twin-plugin",
+  "owner": {
+    "name": "liukailong",
+    "email": "helloworld.lkl@gmail.com"
+  },
+  "metadata": {
+    "description": "Website extraction, cloning, and resource crawling for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "web-twin",
+      "source": "./",
+      "description": "Extract HTML, CSS, JS, images, fonts, UI components from any website. Supports Selenium JS rendering with graceful HTTP fallback.",
+      "author": {
+        "name": "liukailong"
+      },
+      "homepage": "https://github.com/SuperTapir/web-twin-plugin",
+      "repository": "https://github.com/SuperTapir/web-twin-plugin",
+      "license": "MIT",
+      "keywords": [
+        "web-scraping",
+        "website-cloning",
+        "html-extraction",
+        "ui-components",
+        "selenium",
+        "beautifulsoup",
+        "url2app"
+      ],
+      "category": "tools",
+      "tags": [
+        "web-scraping",
+        "website-cloning",
+        "extraction",
+        "skills"
+      ]
+    }
+  ]
+}
