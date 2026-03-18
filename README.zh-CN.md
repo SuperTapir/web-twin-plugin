@@ -22,13 +22,13 @@ Claude Code 插件：网站提取、克隆与资源抓取。
 ### 1. 添加 Marketplace
 
 ```bash
-claude mcp add-marketplace SuperTapir/web-twin-plugin
+claude plugin marketplace add SuperTapir/web-twin-plugin
 ```
 
 ### 2. 安装插件
 
 ```bash
-claude plugin install web-twin@SuperTapir/web-twin-plugin
+claude plugin install web-twin@web-twin-plugin
 ```
 
 ### 3. 开始使用

@@ -22,13 +22,13 @@ Once installed, Claude automatically gains full knowledge of the `web_twin` modu
 ### 1. Add Marketplace
 
 ```bash
-claude mcp add-marketplace SuperTapir/web-twin-plugin
+claude plugin marketplace add SuperTapir/web-twin-plugin
 ```
 
 ### 2. Install Plugin
 
 ```bash
-claude plugin install web-twin@SuperTapir/web-twin-plugin
+claude plugin install web-twin@web-twin-plugin
 ```
 
 ### 3. Start Using
