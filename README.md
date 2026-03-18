@@ -1,73 +1,102 @@
 # web-twin
 
-Claude Code plugin for website extraction, cloning, and resource crawling.
+Claude Code 插件：网站提取、克隆与资源抓取。
 
-> Based on [WebTwin](https://github.com/sirioberati/WebTwin) by [Sirio Berati](https://stan.store/heysirio) ([@heysirio](https://github.com/sirioberati)), licensed under MIT.
+> 基于 [WebTwin](https://github.com/sirioberati/WebTwin) by [Sirio Berati](https://stan.store/heysirio) ([@heysirio](https://github.com/sirioberati))，MIT 协议。
 
-## What it does
+## 它能做什么
 
-When you ask Claude to clone or extract a website, this skill provides:
+安装后，当你让 Claude 克隆或提取网站时，Claude 会自动获得 `web_twin` 模块的完整知识：
 
-- **Complete API reference** for the `web_twin` module
-- **Ready-to-use source code** in `reference/` directory (copy into your project)
-- **Usage patterns** for extracting HTML, CSS, JS, images, fonts, and UI components
-- **Integration guidance** for async contexts (FastAPI, Celery)
-- **Gotchas and best practices** to avoid common pitfalls
+- 如何调用 `extract_website()` 抓取网站的 HTML、CSS、JS、图片、字体
+- 如何提取 UI 组件（导航栏、卡片、表单等 13 种类型）
+- 如何处理 JavaScript 渲染的页面（Selenium 无头浏览器）
+- 异步调用、反检测、多级降级等最佳实践
 
-## Trigger phrases
+**你不需要手动做任何事**——安装插件后直接对 Claude 说"帮我克隆这个网站"就行。
 
-The skill activates when you mention:
+## 快速开始
 
-- "extract website", "clone site", "scrape", "crawl page"
-- "download page", "website assets", "UI components extraction"
-- "website to app", "url2app", "selenium render"
-- "web_twin", "webtwin"
-
-## Features
-
-- **11-step extraction pipeline**: URL normalization → Selenium/HTTP fetch → HTML parsing → metadata/assets/components extraction → output generation
-- **Multi-level degradation**: Selenium → HTTP → Regex fallback
-- **Anti-detection**: User-Agent rotation, Referer randomization
-- **Framework-aware**: Next.js, React, Angular specific resource extraction
-- **13 UI component types**: navigation, header, footer, hero, card, form, CTA, sidebar, modal, section, store, mobile, cart
-
-## Installation
+### 1. 添加 Marketplace
 
 ```bash
-claude plugin install /path/to/web-twin-plugin
+claude mcp add-marketplace SuperTapir/web-twin-plugin
 ```
 
-Or add to your project's `.claude/settings.json`:
+### 2. 安装插件
 
-```json
-{
-  "enabledPlugins": {
-    "/path/to/web-twin-plugin": true
-  }
-}
+```bash
+claude plugin install web-twin@SuperTapir/web-twin-plugin
 ```
 
-## Integration
+### 3. 开始使用
 
-1. Copy `skills/web-twin/reference/` into your project as `web_twin/`
-2. Install dependencies: `pip install requests beautifulsoup4`
-3. (Optional) For JS rendering: `pip install selenium webdriver-manager`
+```
+> 帮我提取 https://example.com 的网站资源和 UI 组件
 
-```python
-from web_twin.extractor import extract_website
+> 用 web_twin 抓取这个页面，分析它的布局结构
 
-result = extract_website("https://example.com", output_path="./output")
-print(result.metadata.title)
-print(result.components.to_dict())
+> 克隆这个网站的设计，提取所有 CSS 和图片
+```
+
+## 触发短语
+
+当你的对话中提到以下内容时，Skill 会自动激活：
+
+| 场景 | 触发词 |
+|------|--------|
+| 网站克隆 | "clone site", "克隆网站", "extract website" |
+| 资源抓取 | "scrape", "crawl page", "download page" |
+| 组件提取 | "UI components", "提取组件" |
+| 模块调用 | "web_twin", "webtwin", "extract_website" |
+| 工作流 | "url2app", "website to app" |
+
+## 核心能力
+
+```
+Selenium 无头浏览器渲染（JS 动态内容）
+  ↓ 失败则降级
+HTTP 静态下载
+  ↓ 产出 HTML
+BeautifulSoup 解析
+  ↓ 资源太少
+正则补充扫描
+```
+
+- **11 步提取流水线**：URL 标准化 → 渲染 → 解析 → 元数据/资源/组件提取 → 输出
+- **反检测**：User-Agent 轮换、Referer 随机化、重试机制
+- **框架感知**：Next.js / React / Angular 专属资源提取
+- **13 种 UI 组件**：navigation, header, footer, hero, card, form, CTA, sidebar, modal, section, store, mobile, cart
+
+## 插件内容
+
+```
+web-twin-plugin/
+├── .claude-plugin/plugin.json       # 插件清单
+├── LICENSE                          # MIT 协议
+├── README.md
+└── skills/web-twin/
+    ├── SKILL.md                     # Skill 文档（Claude 自动读取）
+    └── reference/                   # 完整模块源码
+        ├── __init__.py              # 公共 API
+        ├── extractor.py             # 主提取器（11 步流水线）
+        ├── parser.py                # HTML/CSS 解析
+        ├── renderer.py              # Selenium 渲染
+        ├── downloader.py            # HTTP 下载（反检测）
+        ├── models.py                # 数据模型
+        ├── utils.py                 # 工具函数
+        ├── logger.py                # 日志
+        ├── cli.py                   # CLI 接口
+        └── requirements.txt         # Python 依赖
 ```
 
 ## Credits
 
-This plugin is based on [WebTwin](https://github.com/sirioberati/WebTwin) by **Sirio Berati**. The original project provides the core website extraction engine.
+基于 [WebTwin](https://github.com/sirioberati/WebTwin) by **Sirio Berati**。
 
-- Original repo: https://github.com/sirioberati/WebTwin
-- Author: https://stan.store/heysirio
+- 原始仓库：https://github.com/sirioberati/WebTwin
+- 作者主页：https://stan.store/heysirio
 
 ## License
 
-MIT — see the [original LICENSE](https://github.com/sirioberati/WebTwin/blob/main/LICENSE) for full terms.
+MIT — 详见 [LICENSE](./LICENSE)。
