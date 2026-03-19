@@ -29,21 +29,16 @@ claude plugin install web-twin@web-twin-plugin
 ### Option B: Git Clone
 
 ```bash
-git clone https://github.com/SuperTapir/web-twin-plugin.git ~/.claude/skills/web-twin-plugin
+git clone https://github.com/SuperTapir/web-twin-plugin.git
+cp -r web-twin-plugin/skills/web-twin ~/.claude/skills/web-twin
 ```
 
-Then add to your project's `.claude/settings.json`:
+This copies the skill into your personal skills directory (`~/.claude/skills/`), making it available across all projects.
 
-```json
-{
-  "skills": ["~/.claude/skills/web-twin-plugin/skills/web-twin"]
-}
-```
-
-Or copy the skill folder directly into your project:
+You can also load the entire plugin for local development:
 
 ```bash
-cp -r web-twin-plugin/skills/web-twin .claude/skills/web-twin
+claude --plugin-dir ./web-twin-plugin
 ```
 
 ### Start Using
